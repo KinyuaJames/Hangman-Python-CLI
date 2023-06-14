@@ -1,10 +1,8 @@
 import random
-# from words import words
 import string
 from PyDictionary import PyDictionary
 
-# >>>>>>>>>>>>>>>>>>method to get valid words from a dictionary<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-# print(random.choice(words))
+
 with open ('./word2.txt') as f:
     datta = f.read()
     z = datta.split(", ")
@@ -20,9 +18,11 @@ with open ('./word2.txt') as f:
                 words.append(o)
         else:
             words.append(i)
-    # print(words)
 f.close()
-    # cleaner words array
+# above gets a cleaner words array
+    
+    
+# >>>>>>>>>>>>>>>>>>method to get valid words from a dictionary<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 def get_valid_word(words):
                 
     word =  random.choice(words)
@@ -98,7 +98,7 @@ def hangman():
                 print("Invalid/Not a letter ")
             # return
     # this conditions are outside the loop and are called if the game is won or lost
-    if life==0:
+    if life==0 and (len(word_letters)>0):
         print('\n \n \n Haangman, broke thy neck😵🤪🤕, word was',word, '\n \n \n')
     else:
         print("\n \n \n Escaped the gallows🎶🎉 word was", word, '\n \n \n \n')
