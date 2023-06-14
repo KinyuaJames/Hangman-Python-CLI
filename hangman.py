@@ -6,14 +6,14 @@ from PyDictionary import PyDictionary
 with open ('./word2.txt') as f:
     datta = f.read()
     z = datta.split(", ")
-    words=[]
+    words=[]#initialize the variable words that will store all the words file from the txt file in this array
     for i in z:
         if " " in i:
-            l =  i.replace(' ','')
+            l =  i.replace(' ','')#remove any preceding space from the word after the split
             # print (i)
             words.append(l)
         elif "," in i:
-            m = i.split(",")
+            m = i.split(",")#split any word in the array joined with a comma
             for o in m:
                 words.append(o)
         else:
@@ -35,10 +35,8 @@ def get_valid_word(words):
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>method to get the meaning of the passed word<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 def getMeaning(wordie):
-    dewird = wordie
-    # print('MEANINGS', PyDictionary('something').getMeanings())
-    # print(dict[wordie])
     dict = PyDictionary(wordie).getMeanings()#>>>>>>>>>>>>>>>>>>get the meaning from pydic, need internet connection<<<<<<<<<<<<<<<<<<
+   
     # check if there are the following in the pydict and take the first two if any
     if 'Noun'or'Adjective'or'Verb' or 'Adverb' in dict[wordie]:
         if 'Noun' in dict[wordie]:
@@ -88,7 +86,8 @@ def hangman():
             life -= 1
             print("Letter already provided. Try another letter...Careful, dont waste lives")
             print("Letters used: \n {", "  ".join(used_letters),"}")
-        else:
+            
+        else:#check if the user wants the meaning of the word
             if user_letter == 'MNG':
                 if ( life-1 <= displayLetters.count(" ? ")) :
                     getMeaning(word)
